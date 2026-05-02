@@ -174,3 +174,9 @@ p { color: var(--text-secondary); margin-bottom: 20px; }
   background: var(--button-bg);
   color: var(--button-text);
 }
+
+.comments-section {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 2px solid var(--border-color);
+}
