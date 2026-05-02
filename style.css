@@ -125,3 +125,52 @@ p { color: var(--text-secondary); margin-bottom: 20px; }
 .bonus {
   border: 2px dashed var(--text-primary);
 }
+
+.contact-section {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 2px solid var(--border-color);
+  text-align: left;
+}
+
+.contact-section h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group input, 
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--container-bg);
+  color: var(--text-primary);
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--button-bg);
+  background: transparent;
+  color: var(--button-bg);
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background: var(--button-bg);
+  color: var(--button-text);
+}
