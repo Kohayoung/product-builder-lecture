@@ -1,1 +1,127 @@
-/* Add styles here */
+:root {
+  /* Dark mode (default) */
+  --bg-gradient: linear-gradient(135deg, #0f172a, #1e293b);
+  --container-bg: #1e293b;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --button-bg: #38bdf8;
+  --button-hover: #0ea5e9;
+  --button-text: #0f172a;
+  --border-color: #334155;
+  --shadow: rgba(0,0,0,0.4);
+}
+
+[data-theme="light"] {
+  /* Light mode */
+  --bg-gradient: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  --container-bg: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --button-bg: #0ea5e9;
+  --button-hover: #0284c7;
+  --button-text: #ffffff;
+  --border-color: #e2e8f0;
+  --shadow: rgba(0,0,0,0.1);
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+.container {
+  text-align: center;
+  background: var(--container-bg);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px var(--shadow);
+  width: 420px;
+  transition: background 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#themeBtn {
+  background: none;
+  border: 1px solid var(--text-secondary);
+  color: var(--text-primary);
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+h1 { margin-bottom: 10px; }
+
+p { color: var(--text-secondary); margin-bottom: 20px; }
+
+.main-btn {
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.main-btn:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+}
+
+.option {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.result-set {
+  margin-top: 20px;
+  padding: 10px;
+  border-top: 1px solid var(--border-color);
+}
+
+.numbers {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ball {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+}
+
+/* 색상 구간 */
+.range1 { background: #facc15; color:#000;} /* 1~10 */
+.range2 { background: #3b82f6;} /* 11~20 */
+.range3 { background: #ef4444;} /* 21~30 */
+.range4 { background: #22c55e;} /* 31~40 */
+.range5 { background: #a855f7;} /* 41~45 */
+
+.bonus {
+  border: 2px dashed var(--text-primary);
+}

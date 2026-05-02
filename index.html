@@ -4,95 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>로또 번호 추천기</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: #e2e8f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-
-    .container {
-      text-align: center;
-      background: #1e293b;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-      width: 420px;
-    }
-
-    h1 { margin-bottom: 10px; }
-
-    p { color: #94a3b8; margin-bottom: 20px; }
-
-    button {
-      padding: 14px 24px;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      border-radius: 12px;
-      background: #38bdf8;
-      color: #0f172a;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      background: #0ea5e9;
-      transform: translateY(-2px);
-    }
-
-    .option {
-      margin-bottom: 20px;
-      font-size: 14px;
-    }
-
-    .result-set {
-      margin-top: 20px;
-      padding: 10px;
-      border-top: 1px solid #334155;
-    }
-
-    .numbers {
-      margin-top: 10px;
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .ball {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-weight: bold;
-      font-size: 16px;
-      color: white;
-    }
-
-    /* 색상 구간 */
-    .range1 { background: #facc15; color:#000;} /* 1~10 */
-    .range2 { background: #3b82f6;} /* 11~20 */
-    .range3 { background: #ef4444;} /* 21~30 */
-    .range4 { background: #22c55e;} /* 31~40 */
-    .range5 { background: #a855f7;} /* 41~45 */
-
-    .bonus {
-      border: 2px dashed #fff;
-    }
-
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="container">
+  <div class="theme-toggle">
+    <button id="themeBtn" onclick="toggleTheme()">🌙 다크 모드</button>
+  </div>
+
   <h1>🎰 로또 번호 추천</h1>
   <p>버튼을 누르면 5게임이 한 번에 생성됩니다</p>
 
@@ -102,72 +22,12 @@
     </label>
   </div>
 
-  <button onclick="generateLotto()">번호 생성하기</button>
+  <button class="main-btn" onclick="generateLotto()">번호 생성하기</button>
 
   <div id="results"></div>
 </div>
 
-<script>
-  function getBallClass(num) {
-    if (num <= 10) return 'range1';
-    if (num <= 20) return 'range2';
-    if (num <= 30) return 'range3';
-    if (num <= 40) return 'range4';
-    return 'range5';
-  }
-
-  function generateOneSet(includeBonus) {
-    const numbers = new Set();
-
-    while (numbers.size < 6) {
-      numbers.add(Math.floor(Math.random() * 45) + 1);
-    }
-
-    const main = Array.from(numbers).sort((a,b)=>a-b);
-
-    let bonus = null;
-    if (includeBonus) {
-      do {
-        bonus = Math.floor(Math.random() * 45) + 1;
-      } while (numbers.has(bonus));
-    }
-
-    return { main, bonus };
-  }
-
-  function generateLotto() {
-    const includeBonus = document.getElementById('bonusCheck').checked;
-    const container = document.getElementById('results');
-    container.innerHTML = '';
-
-    for (let i = 0; i < 5; i++) {
-      const { main, bonus } = generateOneSet(includeBonus);
-
-      const setDiv = document.createElement('div');
-      setDiv.className = 'result-set';
-
-      const numbersDiv = document.createElement('div');
-      numbersDiv.className = 'numbers';
-
-      main.forEach(num => {
-        const ball = document.createElement('div');
-        ball.className = 'ball ' + getBallClass(num);
-        ball.innerText = num;
-        numbersDiv.appendChild(ball);
-      });
-
-      if (includeBonus && bonus !== null) {
-        const bonusBall = document.createElement('div');
-        bonusBall.className = 'ball bonus ' + getBallClass(bonus);
-        bonusBall.innerText = bonus;
-        numbersDiv.appendChild(bonusBall);
-      }
-
-      setDiv.appendChild(numbersDiv);
-      container.appendChild(setDiv);
-    }
-  }
-</script>
+<script src="main.js"></script>
 
 </body>
 </html>
